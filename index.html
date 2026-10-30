@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!--
+    ======================================================================
+    STILL TO REPLACE (search for these strings in this file):
+    PROJECTS: edit the cards in the Projects section (title, description, link).
+    Links that still contain "YOUR_" show a small notice instead of navigating.
+
+    PHOTO: images/profile.jpg is used in the hero and the About card.
+
+    ICONS: interface icons are Lucide (lucide.dev, ISC licence), inlined in the
+    sprite below. Technology logos are from Simple Icons (CC0), plus the VS Code
+    glyph from Material Design Icons (Apache 2.0).
+    ======================================================================
+  -->
+
+  <title>Nayama Daffa | Portfolio</title>
+  <meta name="description" content="Portfolio of Nayama Daffa, a fullstack web developer who turns ideas into functional, well-designed web experiences with Laravel, PHP, JavaScript, Python and Tailwind CSS.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark light">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Nayama Daffa | Portfolio">
+  <meta property="og:description" content="Fullstack web developer building functional, well-designed web experiences.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Nayama Daffa | Portfolio">
+  <meta name="twitter:description" content="Fullstack web developer building functional, well-designed web experiences.">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%23111827'/%3E%3Ctext x='16' y='21' font-family='sans-serif' font-size='13' font-weight='800' text-anchor='middle' fill='%23fdfdfd'%3END%3C/text%3E%3C/svg%3E">
+
+  <!-- Font: Plus Jakarta Sans (system fonts are the fallback). -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+
+  <!-- Applies the saved (or system) theme before first paint and enables JS-only styles.
+       If script.js fails to load, the JS-only styles are removed after 4s so content never stays hidden. -->
+  <script>
+    (function () {
+      var d = document.documentElement;
+      d.classList.add('js', 'is-loading');
+      try {
+        var t = localStorage.getItem('theme');
+        if (t !== 'light' && t !== 'dark') t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        d.setAttribute('data-theme', t);
+      } catch (e) {}
+      setTimeout(function () {
+        if (!d.classList.contains('js-ready')) d.classList.remove('js', 'is-loading');
+      }, 4000);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Icon sprite. i-* = Lucide interface icons (stroke). b-* = technology logos (filled). -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></symbol>
+    <symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></symbol>
+    <symbol id="i-monitor-smartphone" viewBox="0 0 24 24"><path d="M18 8V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8"/><path d="M10 19v-3.96 3.15"/><path d="M7 19h5"/><rect width="6" height="10" x="16" y="12" rx="2"/></symbol>
+    <symbol id="i-external-link" viewBox="0 0 24 24"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-arrow-left-right" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol>
+    <symbol id="b-html5" viewBox="0 0 24 24"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438zm7.031 9.75-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157z"/></symbol>
+    <symbol id="b-css" viewBox="0 0 24 24"><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></symbol>
+    <symbol id="b-javascript" viewBox="0 0 24 24"><path d="M0 0h24v24H0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179z"/></symbol>
+    <symbol id="b-php" viewBox="0 5.69 24 12.63"><path d="M7.01 10.207h-.944l-.515 2.648h.838q.834 0 1.242-.314.408-.315.55-1.049.137-.705-.124-.995-.262-.29-1.047-.29M12 5.688C5.373 5.688 0 8.514 0 12s5.373 6.313 12 6.313S24 15.486 24 12s-5.373-6.312-12-6.312m-3.26 7.451c-.261.25-.575.438-.917.551q-.505.163-1.285.164H5.357l-.327 1.681H3.652l1.23-6.326h2.65q1.195 0 1.744.628.549.627.33 1.752a2.8 2.8 0 0 1-.305.847q-.215.383-.561.703m4.024.715.543-2.799q.094-.478-.068-.651-.16-.174-.687-.174H11.46l-.704 3.625H9.388l1.23-6.327h1.367l-.327 1.682h1.218q1.15 0 1.586.401c.436.401.378.7.263 1.299l-.572 2.944zm7.597-2.265a2.8 2.8 0 0 1-.305.847q-.214.383-.561.703a2.44 2.44 0 0 1-.917.551q-.504.163-1.286.164h-1.18l-.327 1.682h-1.378l1.23-6.326h2.649q1.195 0 1.744.628.55.626.331 1.751m-2.595-1.382h-.943l-.516 2.648h.838q.835 0 1.242-.314.407-.315.551-1.049.137-.705-.125-.995c-.262-.29-.524-.29-1.047-.29"/></symbol>
+    <symbol id="b-laravel" viewBox="0 0 24 24"><path d="M23.642 5.43a.4.4 0 0 1 .014.1v5.149c0 .135-.073.26-.189.326l-4.323 2.49v4.934a.38.38 0 0 1-.188.326L9.93 23.949a.3.3 0 0 1-.066.027q-.012.005-.024.01a.35.35 0 0 1-.192 0q-.016-.005-.03-.012-.031-.01-.062-.025L.533 18.755a.38.38 0 0 1-.189-.326V2.974q0-.05.014-.098c.003-.012.01-.02.014-.032a.4.4 0 0 1 .023-.058c.004-.013.015-.022.023-.033l.033-.045q.018-.014.037-.027.02-.018.041-.034H.53L5.043.05a.38.38 0 0 1 .375 0L9.93 2.647h.002q.021.015.04.033l.038.027c.013.014.02.03.033.045.008.011.02.021.025.033q.014.029.024.058c.003.011.01.021.013.032q.014.047.014.098v9.652l3.76-2.164V5.527q0-.05.013-.098.007-.014.013-.032a1 1 0 0 1 .024-.059c.007-.012.018-.02.025-.033q.017-.023.033-.043.019-.017.037-.028.02-.017.041-.032h.001l4.513-2.598a.38.38 0 0 1 .375 0l4.513 2.598c.016.01.027.021.042.031q.019.014.036.028.018.022.034.044c.008.012.019.021.024.033a.3.3 0 0 1 .024.06q.01.015.015.032m-.74 5.032V6.179l-1.578.908-2.182 1.256v4.283zm-4.51 7.75v-4.287l-2.147 1.225-6.126 3.498v4.325zM1.093 3.624v14.588l8.273 4.761v-4.325l-4.322-2.445-.002-.003H5.04q-.02-.016-.04-.031-.018-.014-.035-.027l-.001-.002q-.018-.018-.031-.04-.016-.016-.028-.036h-.002q-.01-.022-.02-.047c-.006-.016-.014-.027-.018-.043l-.008-.057q-.005-.02-.006-.041V5.789l-2.18-1.257zM5.23.81 1.47 2.974l3.76 2.164 3.758-2.164zm1.956 13.505 2.182-1.256V3.624l-1.58.91-2.182 1.255v9.435zm11.581-10.95-3.76 2.163 3.76 2.163 3.759-2.164zm-.376 4.978L16.21 7.087l-1.58-.907v4.283l2.182 1.256 1.58.908zm-8.65 9.654 5.514-3.148 2.756-1.572-3.757-2.163-4.323 2.489-3.941 2.27z"/></symbol>
+    <symbol id="b-mysql" viewBox="0 3.85 24 16.3"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.14-.04-.067-.126-.1-.18-.153zM5.77 18.695h-.927a51 51 0 0 0-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a73 73 0 0 0-.195 4.41H0q.083-2.95.41-5.53h1.15l1.335 4.064h.008l1.347-4.064h1.095q.363 3.024.428 5.53zm4.017-4.08q-.567 3.069-1.492 4.46-.723 1.074-1.583 1.073-.228 0-.566-.138v-.494q.166.026.386.026.402 0 .647-.222.295-.27.295-.605 0-.233-.23-.944L6.23 14.615h.91l.727 2.36q.247.804.205 1.123.6-1.598.835-3.483zm12.325 4.08h-2.63v-5.53h.885v4.85h1.745zm-3.32.135-1.016-.5q.136-.113.255-.25.649-.76.648-2.253 0-2.745-2.155-2.746-1.056 0-1.65.697-.646.762-.646 2.245-.001 1.459.574 2.14.524.615 1.583.615.396 0 .725-.098l1.325.772.36-.622zM15.5 17.588q-.337-.541-.337-1.736 0-2.09 1.27-2.09.666 0 .977.5.336.543.336 1.723 0 2.107-1.27 2.108-.667 0-.978-.5zm-1.658-.425q0 .706-.516 1.156-.514.45-1.384.45c-.543 0-1.064-.172-1.573-.515l.237-.476q.656.329 1.19.328.498 0 .783-.22a.75.75 0 0 0 .3-.615c0-.33-.23-.61-.648-.845-.388-.213-1.163-.657-1.163-.657-.422-.307-.632-.636-.632-1.177q0-.674.47-1.085.471-.416 1.22-.415.769 0 1.4.41l-.213.476a2.7 2.7 0 0 0-1.064-.23q-.425 0-.654.206a.69.69 0 0 0-.248.524c0 .328.234.61.666.85.393.215 1.187.67 1.187.67.433.305.648.63.648 1.168zm9.382-5.852c-.535-.014-.95.04-1.297.188-.1.04-.26.04-.274.167.055.053.063.14.11.214.08.134.218.313.346.407q.208.167.427.31c.26.16.555.255.81.416.145.094.293.213.44.313.073.05.12.14.214.172v-.02c-.046-.06-.06-.147-.105-.214-.067-.067-.134-.127-.2-.193a3.2 3.2 0 0 0-.695-.675c-.214-.146-.682-.35-.77-.595l-.013-.014c.146-.013.32-.066.46-.106.227-.06.435-.047.67-.106q.16-.042.32-.094v-.06c-.12-.12-.21-.283-.334-.395a9 9 0 0 0-1.104-.823c-.21-.134-.476-.22-.697-.334-.08-.04-.214-.06-.26-.127-.12-.146-.19-.34-.275-.514a18 18 0 0 1-.547-1.163c-.12-.262-.193-.523-.34-.763-.69-1.137-1.437-1.826-2.586-2.5-.247-.14-.543-.2-.856-.274-.167-.008-.334-.02-.5-.027-.11-.047-.216-.174-.31-.235-.38-.24-1.364-.76-1.644-.072-.18.434.267.862.422 1.082.115.153.26.328.34.5.047.116.06.235.107.356.106.294.207.622.347.897.073.14.153.287.247.413.054.073.146.107.167.227-.094.136-.1.334-.154.5-.24.757-.146 1.693.194 2.25.107.166.362.534.703.393.3-.12.234-.5.32-.835.02-.08.007-.133.048-.187v.015c.094.188.188.367.274.555.206.328.566.668.867.895.16.12.287.328.487.402v-.02h-.015c-.043-.058-.1-.086-.154-.133a3.5 3.5 0 0 1-.35-.4 9 9 0 0 1-.747-1.218c-.11-.21-.202-.436-.29-.643-.04-.08-.04-.2-.107-.24-.1.146-.247.273-.32.453-.127.288-.14.642-.188 1.01-.027.007-.014 0-.027.014-.214-.052-.287-.274-.367-.46-.2-.475-.233-1.238-.06-1.785.047-.14.247-.582.167-.716-.042-.127-.174-.2-.247-.303a2.5 2.5 0 0 1-.24-.427c-.16-.374-.24-.788-.414-1.162-.08-.173-.22-.354-.334-.513-.127-.18-.267-.307-.368-.52-.033-.073-.08-.194-.027-.274.014-.054.042-.075.094-.09.088-.072.335.022.422.062.247.1.455.194.662.334.094.066.195.193.315.226h.14c.214.047.455.014.655.073.355.114.675.28.962.46a5.95 5.95 0 0 1 2.085 2.286c.08.154.115.295.188.455.14.33.313.663.455.982.14.315.275.636.476.897.1.14.502.213.682.286.133.06.34.115.46.188.23.14.454.3.67.454.11.076.443.243.463.378"/></symbol>
+    <symbol id="b-git" viewBox="0 0 24 24"><path d="M23.546 10.93 13.067.452a1.55 1.55 0 0 0-2.188 0L8.708 2.627l2.76 2.76a1.838 1.838 0 0 1 2.327 2.341l2.658 2.66a1.838 1.838 0 0 1 1.9 3.039 1.837 1.837 0 0 1-2.6 0 1.85 1.85 0 0 1-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348a1.85 1.85 0 0 1 0 2.6 1.844 1.844 0 0 1-2.609 0 1.834 1.834 0 0 1 0-2.598c.182-.18.387-.316.605-.406V8.835a1.834 1.834 0 0 1-.996-2.41L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477a1.545 1.545 0 0 0 2.186 0l10.43-10.43a1.544 1.544 0 0 0 0-2.187"/></symbol>
+    <symbol id="b-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="b-vscode" viewBox="0 0 24 24"><path d="M17 16.47V7.39l-6 4.54M2.22 9.19a.86.86 0 0 1-.02-1.15l1.2-1.11c.2-.18.69-.26 1.05 0l3.42 2.61 7.93-7.25c.32-.32.87-.45 1.5-.12l4 1.91c.36.21.7.54.7 1.15v13.5c0 .4-.29.83-.6 1l-4.4 2.1c-.32.13-.92.01-1.13-.2l-8.02-7.3-3.4 2.6c-.38.26-.85.19-1.05 0l-1.2-1.1c-.32-.33-.28-.87.05-1.2l3-2.7"/></symbol>
+    <symbol id="b-python" viewBox="0 0 24 24"><path d="m14.25.18.9.2.73.26.59.3.45.32.34.34.25.34.16.33.1.3.04.26.02.2-.01.13V8.5l-.05.63-.13.55-.21.46-.26.38-.3.31-.33.25-.35.19-.35.14-.33.1-.3.07-.26.04-.21.02H8.77l-.69.05-.59.14-.5.22-.41.27-.33.32-.27.35-.2.36-.15.37-.1.35-.07.32-.04.27-.02.21v3.06H3.17l-.21-.03-.28-.07-.32-.12-.35-.18-.36-.26-.36-.36-.35-.46-.32-.59-.28-.73-.21-.88-.14-1.05-.05-1.23.06-1.22.16-1.04.24-.87.32-.71.36-.57.4-.44.42-.33.42-.24.4-.16.36-.1.32-.05.24-.01h.16l.06.01h8.16v-.83H6.18l-.01-2.75-.02-.37.05-.34.11-.31.17-.28.25-.26.31-.23.38-.2.44-.18.51-.15.58-.12.64-.1.71-.06.77-.04.84-.02 1.27.05zm-6.3 1.98-.23.33-.08.41.08.41.23.34.33.22.41.09.41-.09.33-.22.23-.34.08-.41-.08-.41-.23-.33-.33-.22-.41-.09-.41.09zm13.09 3.95.28.06.32.12.35.18.36.27.36.35.35.47.32.59.28.73.21.88.14 1.04.05 1.23-.06 1.23-.16 1.04-.24.86-.32.71-.36.57-.4.45-.42.33-.42.24-.4.16-.36.09-.32.05-.24.02-.16-.01h-8.22v.82h5.84l.01 2.76.02.36-.05.34-.11.31-.17.29-.25.25-.31.24-.38.2-.44.17-.51.15-.58.13-.64.09-.71.07-.77.04-.84.01-1.27-.04-1.07-.14-.9-.2-.73-.25-.59-.3-.45-.33-.34-.34-.25-.34-.16-.33-.1-.3-.04-.25-.02-.2.01-.13v-5.34l.05-.64.13-.54.21-.46.26-.38.3-.32.33-.24.35-.2.35-.14.33-.1.3-.06.26-.04.21-.02.13-.01h5.84l.69-.05.59-.14.5-.21.41-.28.33-.32.27-.35.2-.36.15-.36.1-.35.07-.32.04-.28.02-.21V6.07h2.09l.14.01zm-6.47 14.25-.23.33-.08.41.08.41.23.33.33.23.41.08.41-.08.33-.23.23-.33.08-.41-.08-.41-.23-.33-.33-.23-.41-.08-.41.08z"/></symbol>
+    <symbol id="b-tailwindcss" viewBox="0 0 24 24"><path d="M12.001 4.8q-4.8 0-6 4.8 1.8-2.4 4.2-1.8c.913.228 1.565.89 2.288 1.624C13.666 10.618 15.027 12 18.001 12q4.8 0 6-4.8-1.8 2.4-4.2 1.8c-.913-.228-1.565-.89-2.288-1.624C16.337 6.182 14.976 4.8 12.001 4.8m-6 7.2q-4.8 0-6 4.8 1.8-2.4 4.2-1.8c.913.228 1.565.89 2.288 1.624 1.177 1.194 2.538 2.576 5.512 2.576q4.8 0 6-4.8-1.8 2.4-4.2 1.8c-.913-.228-1.565-.89-2.288-1.624C10.337 13.382 8.976 12 6.001 12"/></symbol>
+      <symbol id="i-award" viewBox="0 0 24 24"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"/><circle cx="12" cy="8" r="6"/></symbol>
+    <symbol id="i-graduation" viewBox="0 0 24 24"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><rect width="20" height="14" x="2" y="6" rx="2"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></symbol>
+    <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></symbol>
+    <symbol id="i-folder-open" viewBox="0 0 24 24"><path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/></symbol>
+    <symbol id="i-lightbulb" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"/><path d="m21.854 2.147-10.94 10.939"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect width="20" height="14" x="2" y="3" rx="2"/><line x1="8" x2="16" y1="21" y2="21"/><line x1="12" x2="12" y1="17" y2="21"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></symbol>
+    <symbol id="i-check-circle" viewBox="0 0 24 24"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></symbol>
+  </svg>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="progress" aria-hidden="true"><i></i></div>
+
+  <!-- Page loader (only shown when JavaScript is available) -->
+  <div class="loader" aria-hidden="true">
+    <div class="loader__glow"></div>
+    <div class="loader__name">Nayama</div>
+    <div class="loader__label">Portfolio Loading</div>
+    <div class="loader__bar"><i></i></div>
+  </div>
+
+  <!-- ================================ HEADER ================================ -->
+  <header class="site-header">
+    <div class="nav-shell" data-anim="down">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#home" aria-label="Back to top">PORTOFOLIO</a>
+        <ul class="nav__list"><li><a class="nav__link" href="#home" data-nav="home">Home</a></li><li><a class="nav__link" href="#about" data-nav="about">About</a></li><li><a class="nav__link" href="#skills" data-nav="skills">Skills</a></li><li><a class="nav__link" href="#projects" data-nav="projects">Projects</a></li><li><a class="nav__link" href="#education" data-nav="education">Education</a></li><li><a class="nav__link" href="#certificates" data-nav="certificates">Certificates</a></li><li><a class="nav__link" href="#contact" data-nav="contact">Contact</a></li></ul>
+        <div class="nav__actions">
+          <button class="nav__btn theme-toggle" type="button" data-theme-toggle aria-label="Switch to light theme">
+            <svg class="icon icon--sun" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+            <svg class="icon icon--moon" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+          </button>
+          <button class="nav__btn nav__toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu">
+            <svg class="icon icon--open" aria-hidden="true" focusable="false"><use href="#i-menu"/></svg>
+            <svg class="icon icon--close" aria-hidden="true" focusable="false"><use href="#i-x"/></svg>
+          </button>
+        </div>
+        <div class="nav__panel" id="nav-panel">
+          <ul><li><a class="nav__link" href="#home" data-nav="home">Home</a></li><li><a class="nav__link" href="#about" data-nav="about">About</a></li><li><a class="nav__link" href="#skills" data-nav="skills">Skills</a></li><li><a class="nav__link" href="#projects" data-nav="projects">Projects</a></li><li><a class="nav__link" href="#education" data-nav="education">Education</a></li><li><a class="nav__link" href="#certificates" data-nav="certificates">Certificates</a></li><li><a class="nav__link" href="#contact" data-nav="contact">Contact</a></li></ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ================================ HERO ================================ -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div data-anim="left">
+        <div class="hero__intro">
+          <h1 class="hero__title" id="hero-title">Hi<span class="wave" aria-hidden="true"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-hand"/></svg></span> I'm <span class="hero__name">Nayama Daffa</span></h1>
+          <div class="hero__role" aria-label="Fullstack Developer">
+            <span data-typewriter>Fullstack Developer</span><span class="cursor" aria-hidden="true">|</span>
+          </div>
+          <p class="hero__lead">I'm a Fullstack Web Developer who enjoys turning ideas into functional, well-designed web experiences.</p>
+          <p class="hero__lead">I work with technologies like Laravel, PHP, JavaScript, Python, and Tailwind CSS to build and maintain web applications, from crafting intuitive user interfaces to developing reliable backend systems. I'm always exploring new ways to improve my skills and create solutions that are practical, efficient, and meaningful.</p>
+
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#projects">Explore Work <svg class="icon icon--go" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg></a>
+            <a class="btn btn--ghost" href="#contact">Get In Touch <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></a>
+          </div>
+
+          <div class="hero__connect">
+            <span class="label-xs">Connect</span>
+            <ul>
+              <li><a class="icon-btn" href="https://www.instagram.com/keyaisnothere/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg></a></li>
+              <li><a class="icon-btn" href="https://github.com/nayamadaffa" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></a></li>
+              <li><a class="icon-btn" href="https://www.linkedin.com/in/nayamadaffa/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div data-anim="right">
+        <div class="hero__visual">
+          <div class="hero__glow" aria-hidden="true"></div>
+          <div class="avatar-wrap">
+          <div class="avatar-frame floating">
+
+            <div class="avatar"><img src="images/profile.jpg" alt="Portrait of Nayama Daffa" width="694" height="1040" fetchpriority="high"></div>
+          </div>
+          </div>
+          <ul class="badges" aria-label="Quick facts">
+            <li class="badge floating" style="animation-delay:0s"><span class="badge__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-monitor"/></svg></span><span>Fullstack Developer</span></li>
+            <li class="badge floating" style="animation-delay:.15s"><span class="badge__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-server"/></svg></span><span>Laravel &amp; PHP</span></li>
+            <li class="badge floating" style="animation-delay:.3s"><span class="badge__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-check-circle"/></svg></span><span>Open to Opportunities</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================ ABOUT ================================ -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section__head" data-anim="down">
+        <h2 class="section__eyebrow"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-compass"/></svg>Discover</h2>
+        <h3 class="section__title" id="about-title">About Me</h3>
+      </div>
+
+      <div class="about">
+        <div class="about__photo">
+          <div class="about__photo-inner" data-anim="fade">
+            <div class="photo-card">
+
+              <div class="photo-card__img"><img src="images/profile.jpg" alt="Portrait of Nayama Daffa" width="694" height="1040" loading="lazy"></div>
+            </div>
+            <div class="about__mark" aria-hidden="true">DEV.</div>
+          </div>
+        </div>
+
+        <div class="about__body">
+          <div class="about__cols">
+            <div data-anim="fade">
+              <h4>Who Am I</h4>
+              <p>I'm a fullstack developer with an interest in building web applications that are both functional and thoughtfully designed. I work across frontend and backend development, turning ideas into practical solutions through code.</p>
+              <p>Currently, I'm gaining hands-on experience in web development and IT support, while continuing to explore new technologies and grow as a developer.</p>
+            </div>
+            <div data-anim="fade" style="--d:.1s">
+              <h4>My Approach</h4>
+              <p>I enjoy digging into technical problems, understanding what is actually going wrong, and choosing a solution that fits. My focus is on software that is easy to maintain, pleasant to use, and clear about what it does.</p>
+            </div>
+          </div>
+
+          <div class="details">
+            <div data-anim="fade"><h4>Personal Details</h4></div>
+            <dl>
+            <div class="detail" data-anim="left" style="--d:0.1s"><dt><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-user"/></svg>Name</dt><dd>Nayama Daffa</dd></div>
+            <div class="detail" data-anim="left" style="--d:0.2s"><dt><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-briefcase"/></svg>Currently</dt><dd>Web development &amp; IT support</dd></div>
+            <div class="detail" data-anim="left" style="--d:0.3s"><dt><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg>Email</dt><dd><a href="mailto:nayamadaffa15@gmail.com">nayamadaffa15@gmail.com</a></dd></div>
+            <div class="detail" data-anim="left" style="--d:0.4s"><dt><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-code"/></svg>Role</dt><dd>Fullstack Developer</dd></div>
+            <div class="detail" data-anim="left" style="--d:0.5s"><dt><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-activity"/></svg>Status</dt><dd>Open to Opportunities</dd></div>
+            <div class="detail" data-anim="left" style="--d:0.6s"><dt><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-map-pin"/></svg>Location</dt><dd>Bekasi, Indonesia</dd></div>
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee" data-marquee data-anim="fade" aria-hidden="true">
+        <div class="marquee__row" data-dir="-1"><div class="marquee__track"><span class="marquee__copy">Hello, I'm Nayama Daffa</span></div></div>
+        <div class="marquee__row" data-dir="1"><div class="marquee__track"><span class="marquee__copy">Fullstack Web Developer</span></div></div>
+      </div>
+    </section>
+
+    <!-- ================================ SKILLS ================================ -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="section__head" data-anim="down">
+        <h2 class="section__eyebrow"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg>Skills &amp; Tools</h2>
+        <h3 class="section__title" id="skills-title">My Tech Stack</h3>
+      </div>
+
+      <!--
+        EDIT: change, add, or remove <li class="tile"> items inside any row.
+        Brand logo:   <svg class="logo" style="--brand:#HEX"><use href="#b-NAME"/></svg>
+        Interface icon: <svg class="icon"><use href="#i-NAME"/></svg>
+      -->
+      <div class="stack">
+        <div class="stack__row">
+          <div class="stack__label" data-anim="down" style="--d:0.0s">
+            <h4>Frontend</h4>
+            <p>Responsive, accessible interfaces</p>
+          </div>
+          <ul class="tiles">
+            <li class="tile" data-anim="up" style="--d:0.00s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#E34F26"><use href="#b-html5"/></svg></span><span class="tile__name">HTML5</span></li>
+            <li class="tile" data-anim="up" style="--d:0.05s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#1572B6"><use href="#b-css"/></svg></span><span class="tile__name">CSS3</span></li>
+            <li class="tile" data-anim="up" style="--d:0.10s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#F7DF1E"><use href="#b-javascript"/></svg></span><span class="tile__name">JavaScript</span></li>
+            <li class="tile" data-anim="up" style="--d:0.15s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#06B6D4"><use href="#b-tailwindcss"/></svg></span><span class="tile__name">Tailwind CSS</span></li>
+            <li class="tile" data-anim="up" style="--d:0.20s"><span class="tile__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-monitor-smartphone"/></svg></span><span class="tile__name">Responsive Web Design</span></li>
+          </ul>
+        </div>
+
+        <div class="stack__row">
+          <div class="stack__label" data-anim="down" style="--d:0.1s">
+            <h4>Backend</h4>
+            <p>Server-side logic and RESTful APIs</p>
+          </div>
+          <ul class="tiles">
+            <li class="tile" data-anim="up" style="--d:0.10s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#777BB4"><use href="#b-php"/></svg></span><span class="tile__name">PHP</span></li>
+            <li class="tile" data-anim="up" style="--d:0.15s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#FF2D20"><use href="#b-laravel"/></svg></span><span class="tile__name">Laravel</span></li>
+            <li class="tile" data-anim="up" style="--d:0.20s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#3776AB"><use href="#b-python"/></svg></span><span class="tile__name">Python</span></li>
+            <li class="tile" data-anim="up" style="--d:0.25s"><span class="tile__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-arrow-left-right"/></svg></span><span class="tile__name">REST APIs</span></li>
+          </ul>
+        </div>
+
+        <div class="stack__row">
+          <div class="stack__label" data-anim="down" style="--d:0.2s">
+            <h4>Database</h4>
+            <p>Designing and querying relational data</p>
+          </div>
+          <ul class="tiles">
+            <li class="tile" data-anim="up" style="--d:0.20s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#4479A1"><use href="#b-mysql"/></svg></span><span class="tile__name">MySQL</span></li>
+          </ul>
+        </div>
+
+        <div class="stack__row">
+          <div class="stack__label" data-anim="down" style="--d:0.3s">
+            <h4>Tools</h4>
+            <p>Version control and daily tooling</p>
+          </div>
+          <ul class="tiles">
+            <li class="tile" data-anim="up" style="--d:0.30s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#F05032"><use href="#b-git"/></svg></span><span class="tile__name">Git</span></li>
+            <li class="tile" data-anim="up" style="--d:0.35s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false"><use href="#b-github"/></svg></span><span class="tile__name">GitHub</span></li>
+            <li class="tile" data-anim="up" style="--d:0.40s"><span class="tile__icon"><svg class="logo" aria-hidden="true" focusable="false" style="--brand:#2F9BE6"><use href="#b-vscode"/></svg></span><span class="tile__name">VS Code</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================== PROJECTS =============================== -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="section__head" data-anim="down">
+        <h2 class="section__eyebrow"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-folder-open"/></svg>Portfolio</h2>
+        <h3 class="section__title" id="projects-title">Selected Works</h3>
+      </div>
+
+      <!--
+        Each card embeds the live homepage in an <iframe> (.card__live). The HTML/CSS sketch underneath is only a fallback while it loads.
+        To use a real screenshot, replace the <div class="preview ..."> with
+        <img src="images/your-shot.jpg" alt="Describe the screenshot" style="width:100%;height:100%;object-fit:cover">.
+      -->
+      <div class="projects" data-anim="up">
+        <div class="loop" data-slider>
+          <div class="loop__track">
+            <div class="project-group" data-group>
+        <div class="card-wrap">
+          <article class="card">
+            <div class="card__visual">
+<div class="preview" aria-hidden="true">
+  <div class="site">
+    <div class="site__bar"><i></i><i></i><i></i><span>trinergidutamandiri.com</span></div>
+    <div class="site__body">
+      <p class="site__kicker">Trinergi</p>
+      <p class="site__head">Kebersihan, kesehatan, dan kenyamanan untuk lingkungan terbaik.</p>
+      <div class="site__cta">Hubungi Kami</div>
+      <div class="site__grid"><span>Cleaning</span><span>Pest Control</span><span>Workforce</span></div>
+    </div>
+  </div>
+</div>
+              <!-- Live preview: the real homepage, embedded and scaled down. Remove this block to fall back to the sketch. -->
+              <div class="card__live" aria-hidden="true">
+                <iframe src="https://trinergidutamandiri.com" title="Live preview of trinergidutamandiri.com" loading="lazy" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+              <span class="card__badge" aria-hidden="true"><i></i>Live preview</span>
+              <a class="card__open" href="https://trinergidutamandiri.com" target="_blank" rel="noopener noreferrer" aria-label="Open PT Trinergi Duta Mandiri website"></a>
+              <div class="card__chips" aria-hidden="true"><span class="mini-chip">trinergidutamandiri.com</span></div>
+            </div>
+            <div class="card__body">
+              <span class="card__num" aria-hidden="true">01</span>
+              <h4 class="card__title">PT Trinergi Duta Mandiri</h4>
+              <p class="card__desc">A corporate website for an Indonesian facility services company, presenting its cleaning, pest control and workforce services, the client sectors it works with, project documentation and contact channels.</p>
+              <div class="card__foot">
+                <button class="view-btn" type="button" data-dialog-open="dialog-trinergi" aria-haspopup="dialog">
+                  View Details<span class="sr-only"> for PT Trinergi Duta Mandiri</span>
+                  <span class="view-btn__line" aria-hidden="true"></span>
+                </button>
+                <div class="card__links">
+                  <a class="round-btn" href="https://trinergidutamandiri.com" target="_blank" rel="noopener noreferrer" aria-label="Visit PT Trinergi Duta Mandiri website"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-external-link"/></svg></a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="card-wrap">
+          <article class="card">
+            <div class="card__visual">
+<div class="preview" aria-hidden="true">
+  <div class="site">
+    <div class="site__bar"><i></i><i></i><i></i><span>doviehub.com</span></div>
+    <div class="site__body">
+      <p class="site__kicker">Doviehub</p>
+      <p class="site__head">Pusat jual beli akun game murah dan aman.</p>
+      <div class="site__cta">Lihat Akun</div>
+      <div class="site__grid"><span>Mobile Legends</span><span>Free Fire</span><span>PUBG</span><span>Roblox</span></div>
+    </div>
+  </div>
+</div>
+              <!-- Live preview: the real homepage, embedded and scaled down. Remove this block to fall back to the sketch. -->
+              <div class="card__live" aria-hidden="true">
+                <iframe src="https://doviehub.com" title="Live preview of doviehub.com" loading="lazy" tabindex="-1" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin"></iframe>
+              </div>
+              <span class="card__badge" aria-hidden="true"><i></i>Live preview</span>
+              <a class="card__open" href="https://doviehub.com" target="_blank" rel="noopener noreferrer" aria-label="Open Doviehub website"></a>
+              <div class="card__chips" aria-hidden="true"><span class="mini-chip">doviehub.com</span></div>
+            </div>
+            <div class="card__body">
+              <span class="card__num" aria-hidden="true">02</span>
+              <h4 class="card__title">Doviehub</h4>
+              <p class="card__desc">A marketplace website for buying and selling game accounts, covering popular titles such as Mobile Legends, Free Fire, PUBG and Roblox.</p>
+              <div class="card__foot">
+                <button class="view-btn" type="button" data-dialog-open="dialog-doviehub" aria-haspopup="dialog">
+                  View Details<span class="sr-only"> for Doviehub</span>
+                  <span class="view-btn__line" aria-hidden="true"></span>
+                </button>
+                <div class="card__links">
+                  <a class="round-btn" href="https://doviehub.com" target="_blank" rel="noopener noreferrer" aria-label="Visit Doviehub website"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-external-link"/></svg></a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="projects__note">Previews are live embeds of each website's homepage. If one stays blank, open the site with the link on the card.</p>
+      <p class="projects__more"><a class="text-link" href="https://github.com/nayamadaffa" target="_blank" rel="noopener noreferrer">View more on GitHub <svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-arrow-up-right"/></svg></a></p>
+
+    <dialog class="modal" id="dialog-trinergi" aria-labelledby="dialog-trinergi-title">
+      <div class="modal__panel">
+        <div class="modal__head">
+          <h4 class="modal__title" id="dialog-trinergi-title">PT Trinergi Duta Mandiri</h4>
+          <button class="modal__close" type="button" data-dialog-close aria-label="Close project details"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="modal__body">
+          <p class="modal__desc">A corporate website for an Indonesian facility services company, presenting its cleaning, pest control and workforce services, the client sectors it works with, project documentation and contact channels.</p>
+          <div class="modal__meta">
+            <div>
+              <span class="modal__label">Category</span>
+              <ul class="modal__chips"><li>Company Profile Website</li></ul>
+            </div>
+            <div>
+              <span class="modal__label">Website</span>
+              <ul class="modal__chips"><li>trinergidutamandiri.com</li></ul>
+            </div>
+          </div>
+          <div>
+            <span class="modal__label">Highlights</span>
+            <ul class="modal__features">
+              <li>Services overview</li>
+              <li>Clients grouped by sector</li>
+              <li>Project documentation gallery</li>
+              <li>WhatsApp and contact details</li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal__foot">
+          <a class="btn btn--primary" href="https://trinergidutamandiri.com" target="_blank" rel="noopener noreferrer">Visit Website<span class="sr-only"> for PT Trinergi Duta Mandiri</span></a>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="dialog-doviehub" aria-labelledby="dialog-doviehub-title">
+      <div class="modal__panel">
+        <div class="modal__head">
+          <h4 class="modal__title" id="dialog-doviehub-title">Doviehub</h4>
+          <button class="modal__close" type="button" data-dialog-close aria-label="Close project details"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="modal__body">
+          <p class="modal__desc">A marketplace website for buying and selling game accounts, covering popular titles such as Mobile Legends, Free Fire, PUBG and Roblox.</p>
+          <div class="modal__meta">
+            <div>
+              <span class="modal__label">Category</span>
+              <ul class="modal__chips"><li>Marketplace Website</li></ul>
+            </div>
+            <div>
+              <span class="modal__label">Website</span>
+              <ul class="modal__chips"><li>doviehub.com</li></ul>
+            </div>
+          </div>
+          <div>
+            <span class="modal__label">Highlights</span>
+            <ul class="modal__features">
+              <li>Accounts for multiple game titles</li>
+              <li>Account recommendations</li>
+              <li>Escrow-style intermediary service (rekber)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="modal__foot">
+          <a class="btn btn--primary" href="https://doviehub.com" target="_blank" rel="noopener noreferrer">Visit Website<span class="sr-only"> for Doviehub</span></a>
+        </div>
+      </div>
+    </dialog>
+    </section>
+
+    <!-- =============================== EDUCATION =============================== -->
+    <section class="section" id="education" aria-labelledby="education-title">
+      <div class="section__head" data-anim="down">
+        <h2 class="section__eyebrow"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-graduation"/></svg>Learning Path</h2>
+        <h3 class="section__title" id="education-title">Education</h3>
+      </div>
+      <ol class="timeline">
+        <li class="step" data-anim="up" style="--d:0.0s">
+          <span class="step__num">2020 &ndash; 2023</span>
+          <div class="step__body edu">
+            <img class="edu__logo" src="images/yadika.png" alt="Logo of Yayasan Abdi Karya (Yadika)" width="64" height="64" loading="lazy">
+            <div>
+              <h4>SMA YADIKA 8</h4>
+              <p class="edu__level">Senior High School</p>
+            </div>
+          </div>
+        </li>
+        <li class="step" data-anim="up" style="--d:0.1s">
+          <span class="step__num">2023 &ndash; Present</span>
+          <div class="step__body edu">
+            <img class="edu__logo" src="images/ubsi.png" alt="Logo of Universitas Bina Sarana Informatika" width="64" height="64" loading="lazy">
+            <div>
+              <h4>Universitas Bina Sarana Informatika (UBSI)</h4>
+              <p class="edu__level">University</p>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================== CERTIFICATES ============================== -->
+    <section class="section" id="certificates" aria-labelledby="certificates-title">
+      <div class="section__head" data-anim="down">
+        <h2 class="section__eyebrow"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-award"/></svg>Achievements</h2>
+        <h3 class="section__title" id="certificates-title">Certificates</h3>
+      </div>
+      <!-- EDIT: to add a certificate, add an entry to the certs list in your copy of this section:
+           copy a <li class="cert"> and its matching <dialog id="dialog-cert-..."> and change the text and image path. -->
+      <ul class="certs">
+        <li class="cert" data-anim="up" style="--d:0.0s">
+          <div class="cert__img"><img src="images/cert-dts-2024.jpg" alt="Certificate: Database Design &amp; Database Programming with SQL" loading="lazy"></div>
+          <div class="cert__body">
+            <p class="cert__issuer">Digital Talent Scholarship 2024</p>
+            <h4 class="cert__title">Database Design &amp; Database Programming with SQL</h4>
+            <p class="cert__date">19 Feb 2024 &ndash; 14 Jul 2024</p>
+            <div class="card__foot">
+              <button class="view-btn" type="button" data-dialog-open="dialog-cert-dts" aria-haspopup="dialog">View Certificate<span class="sr-only"> Database Design &amp; Database Programming with SQL</span><span class="view-btn__line" aria-hidden="true"></span></button>
+            </div>
+          </div>
+        </li>
+        <li class="cert" data-anim="up" style="--d:0.1s">
+          <div class="cert__img"><img src="images/cert-sql-101.jpg" alt="Certificate: SQL 101: Belajar SQL dari Nol" loading="lazy"></div>
+          <div class="cert__body">
+            <p class="cert__issuer">Ngulik Data</p>
+            <h4 class="cert__title">SQL 101: Belajar SQL dari Nol</h4>
+            <p class="cert__date">30 Oct 2026</p>
+            <div class="card__foot">
+              <button class="view-btn" type="button" data-dialog-open="dialog-cert-sql101" aria-haspopup="dialog">View Certificate<span class="sr-only"> SQL 101: Belajar SQL dari Nol</span><span class="view-btn__line" aria-hidden="true"></span></button>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+    <dialog class="modal" id="dialog-cert-dts" aria-labelledby="dialog-cert-dts-title">
+      <div class="modal__panel modal__panel--wide">
+        <div class="modal__head">
+          <h4 class="modal__title" id="dialog-cert-dts-title">Database Design &amp; Database Programming with SQL</h4>
+          <button class="modal__close" type="button" data-dialog-close aria-label="Close certificate"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="modal__body">
+          <img class="modal__img" src="images/cert-dts-2024.jpg" alt="Certificate: Database Design &amp; Database Programming with SQL" loading="lazy">
+          <p class="modal__desc" style="margin-top:1.5rem">Completed the Talent Scouting Academy training programme on Database Design and Database Programming with SQL, 180 training hours in total.</p>
+          <div class="modal__meta">
+            <div><span class="modal__label">Issued by</span><ul class="modal__chips"><li>Pusat Pengembangan Talenta Digital, Komdigi (Talent Scouting Academy)</li></ul></div>
+            <div><span class="modal__label">Date</span><ul class="modal__chips"><li>19 Feb 2024 &ndash; 14 Jul 2024</li></ul></div>
+          </div>
+          <div>
+            <span class="modal__label">Breakdown</span>
+            <ul class="modal__features">
+              <li>Database Design: 90 hours</li>
+              <li>Database Programming with SQL: 90 hours</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="modal" id="dialog-cert-sql101" aria-labelledby="dialog-cert-sql101-title">
+      <div class="modal__panel modal__panel--wide">
+        <div class="modal__head">
+          <h4 class="modal__title" id="dialog-cert-sql101-title">SQL 101: Belajar SQL dari Nol</h4>
+          <button class="modal__close" type="button" data-dialog-close aria-label="Close certificate"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-x"/></svg></button>
+        </div>
+        <div class="modal__body">
+          <img class="modal__img" src="images/cert-sql-101.jpg" alt="Certificate: SQL 101: Belajar SQL dari Nol" loading="lazy">
+          <p class="modal__desc" style="margin-top:1.5rem">Certificate of completion for the SQL 101 course, learning SQL from scratch.</p>
+          <div class="modal__meta">
+            <div><span class="modal__label">Issued by</span><ul class="modal__chips"><li>Ngulik Data</li></ul></div>
+            <div><span class="modal__label">Date</span><ul class="modal__chips"><li>30 Oct 2026</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </dialog>
+    </section>
+
+    <!-- ================================ CONTACT ================================ -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="section__head" data-anim="down">
+        <h2 class="section__eyebrow"><svg class="icon icon--sm" aria-hidden="true" focusable="false"><use href="#i-send"/></svg>Get In Touch</h2>
+        <h3 class="section__title" id="contact-title">Contact Me</h3>
+      </div>
+
+      <div class="contact">
+        <div class="contact__card" data-anim="left">
+          <h4>Have a project in mind?</h4>
+          <p>I'm always open to discussing new ideas, collaborating on projects, and exploring new opportunities. Feel free to reach out.</p>
+          <!-- Static site: a plain mailto link is the most reliable option (no backend needed). -->
+          <a class="btn btn--primary" href="mailto:nayamadaffa15@gmail.com?subject=Project%20inquiry">Send Me an Email <svg class="icon icon--send" aria-hidden="true" focusable="false"><use href="#i-send"/></svg></a>
+          <a class="contact__mail" href="mailto:nayamadaffa15@gmail.com">nayamadaffa15@gmail.com</a>
+        </div>
+
+        <div class="contact__links">
+        <a class="link-card" href="https://github.com/nayamadaffa" target="_blank" rel="noopener noreferrer" data-anim="up" style="--d:0.0s">
+          <div class="link-card__main">
+            <span class="link-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-github"/></svg></span>
+            <div class="link-card__text"><h4>GitHub</h4><p>github.com/nayamadaffa</p></div>
+          </div>
+          <svg class="icon link-card__arrow" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          <span class="sr-only">GitHub</span>
+        </a>
+        <a class="link-card" href="https://www.linkedin.com/in/nayamadaffa/" target="_blank" rel="noopener noreferrer" data-anim="up" style="--d:0.1s">
+          <div class="link-card__main">
+            <span class="link-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-linkedin"/></svg></span>
+            <div class="link-card__text"><h4>LinkedIn</h4><p>linkedin.com/in/nayamadaffa</p></div>
+          </div>
+          <svg class="icon link-card__arrow" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          <span class="sr-only">LinkedIn</span>
+        </a>
+        <a class="link-card" href="https://www.instagram.com/keyaisnothere/" target="_blank" rel="noopener noreferrer" data-anim="up" style="--d:0.2s">
+          <div class="link-card__main">
+            <span class="link-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-instagram"/></svg></span>
+            <div class="link-card__text"><h4>Instagram</h4><p>@keyaisnothere</p></div>
+          </div>
+          <svg class="icon link-card__arrow" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          <span class="sr-only">Instagram</span>
+        </a>
+        <a class="link-card" href="mailto:nayamadaffa15@gmail.com" target="_blank" rel="noopener noreferrer" data-anim="up" style="--d:0.3s">
+          <div class="link-card__main">
+            <span class="link-card__icon"><svg class="icon" aria-hidden="true" focusable="false"><use href="#i-mail"/></svg></span>
+            <div class="link-card__text"><h4>Email</h4><p>nayamadaffa15@gmail.com</p></div>
+          </div>
+          <svg class="icon link-card__arrow" aria-hidden="true" focusable="false"><use href="#i-arrow-right"/></svg>
+          <span class="sr-only">Email</span>
+        </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================================ FOOTER ================================ -->
+  <footer class="site-footer">
+    <div class="footer">
+      <div>
+        <p class="footer__copy">&copy; <span id="year">2026</span> Nayama Daffa. All rights reserved.</p>
+        <p class="footer__built">Built with HTML, CSS &amp; JavaScript</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://github.com/nayamadaffa" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/nayamadaffa/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.instagram.com/keyaisnothere/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
